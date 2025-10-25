@@ -1,9 +1,9 @@
 # wxPython
 # Структура кода библиотеки wxPython и описание программы
 
-<img width="763" height="778" alt="image" src="https://github.com/user-attachments/assets/1c503ad1-b1e5-42bd-b92c-17f84dab3697" />
+<img width="763" height="778" alt="image" src="https://github.com/user-attachments/assets/9bb12ab5-61ba-4c28-8ffe-10475fe01427" />
 
-<img width="793" height="836" alt="image" src="https://github.com/user-attachments/assets/993935e6-2252-4c14-bcb6-d491bda3087c" />
+<img width="759" height="800" alt="image" src="https://github.com/user-attachments/assets/1cfb1242-959b-48a4-9dd1-71e961d47b00" />
 
 ## Архитектура приложения
 
