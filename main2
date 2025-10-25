@@ -1,0 +1,119 @@
+import wx
+import os
+
+x = -100
+y = 0
+
+
+class MainWindow(wx.Frame):
+    def __init__(self):
+        super().__init__(None, title="QLabel", size=(630, 640), pos=(100, 100))
+        self.initializeUI()
+
+    def initializeUI(self):
+        """Настройте графический интерфейс приложения."""
+        self.SetUpMainWindow()
+        self.Show()
+
+    def SetUpMainWindow(self):
+        """Создайте StaticText для отображения в главном окне."""
+        panel = wx.Panel(self)
+
+        hello_label = wx.StaticText(panel, label="Приветик!", pos=(280, 23))
+
+        image = r"C:\MyFiles\pics\pic1.jpg"
+        try:
+            if os.path.exists(image):
+                bitmap = wx.Bitmap(image, wx.BITMAP_TYPE_ANY)
+                world_label = wx.StaticBitmap(panel, bitmap=bitmap, pos=(0, 40))
+            else:
+                print(f"Image not found: {image}")
+        except Exception as error:
+            print(f"Error loading image: {error}")
+
+
+class MainWindo(wx.Frame):
+    def __init__(self):
+        super().__init__(None, title="User profile", size=(1000, 1000), pos=(550, 100))
+        self.initializeUI()
+
+    def initializeUI(self):
+        """Настройки графического интерфейса приложения."""
+        self.SetUpMainWindow()
+        self.Show()
+
+    def createImageLabels(self, panel):
+        """Открывает файлы изображений и создаёт метки изображений."""
+        images = ["C:\MyFiles\pics\pic2.jpg"]
+        x_position = 0
+        y_position = 0
+
+        for image in images:
+            try:
+                if os.path.exists(image):
+                    bitmap = wx.Bitmap(image, wx.BITMAP_TYPE_ANY)
+                    label = wx.StaticBitmap(panel, bitmap=bitmap, pos=(x_position, y_position))
+                    x_position += 125  # увеличиваем позицию для следующего изображения по x
+                    y_position += 10  # увеличиваем позицию для следующего изображения по y
+                else:
+                    print(f"Файл {image} не найден")
+            except Exception as e:
+                print(f"Ошибка при загрузке изображения {image}: {e}")
+
+    def SetUpMainWindow(self):
+        """Создайте метки, которые будут отображаться в окне."""
+        panel = wx.Panel(self)
+        panel.SetBackgroundColour(wx.Colour(50, 50, 50))  # Темный фон для контраста
+
+        self.createImageLabels(panel)
+
+        # Создаем шрифты
+        font_large = wx.Font(32, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
+        font_medium = wx.Font(25, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
+        font_small = wx.Font(18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
+
+        user_label = wx.StaticText(panel, label="Арина Перепелкина", pos=(200, 60))
+        user_label.SetFont(font_large)
+        user_label.SetForegroundColour(wx.WHITE)
+
+        bio_label = wx.StaticText(panel, label="Биография:", pos=(30, 500 + x + y))
+        bio_label.SetFont(font_medium)
+        bio_label.SetForegroundColour(wx.WHITE)
+
+        about_label = wx.StaticText(panel, label="Студентка 2-го курса МАИ, М3О-236БВ-24", pos=(30, 550 + x + y))
+        about_label.Wrap(900)  # Перенос текста
+        about_label.SetFont(font_small)
+        about_label.SetForegroundColour(wx.WHITE)
+
+        skills_label = wx.StaticText(panel, label="Умения:", pos=(30, 615 + x + y))
+        skills_label.SetFont(font_medium)
+        skills_label.SetForegroundColour(wx.WHITE)
+
+        languages_label = wx.StaticText(panel, label="Python | SQl", pos=(30, 660 + x + y))
+        languages_label.SetFont(font_small)
+        languages_label.SetForegroundColour(wx.WHITE)
+
+        experience_label = wx.StaticText(panel, label="Опыт:", pos=(30, 595 + y))
+        experience_label.SetFont(font_medium)
+        experience_label.SetForegroundColour(wx.WHITE)
+
+        developer_label = wx.StaticText(panel, label="Ozon Job", pos=(30, 640 + y))
+        developer_label.SetFont(font_small)
+        developer_label.SetForegroundColour(wx.WHITE)
+
+        dev_dates_label = wx.StaticText(panel, label="август '24 - июль '25", pos=(30, 670 + y))
+        dev_dates_label.SetFont(font_small)
+        dev_dates_label.SetForegroundColour(wx.WHITE)
+
+
+class MyApp(wx.App):
+    def OnInit(self):
+        # Создаем оба окна
+        window = MainWindow()
+        window1 = MainWindo()
+        return True
+
+
+if __name__ == "__main__":
+    app = MyApp()
+    app.MainLoop()
